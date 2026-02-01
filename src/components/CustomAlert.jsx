@@ -1,5 +1,5 @@
 import { CheckCircle, XCircle, Info } from 'lucide-react';
-import styles from './Customalert.module.css';
+import styles from './CustomAlert.module.css';
 
 const CustomAlert = ({ isOpen, title, message, type, onClose }) => {
   if (!isOpen) return null;

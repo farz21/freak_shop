@@ -20,7 +20,7 @@ function App() {
       <LoginModal />
       
       {/* Alerta Global estilo SweetAlert */}
-      <Customalert 
+      <CustomAlert 
         isOpen={alerta.isOpen}
         title={alerta.title}
         message={alerta.message}
