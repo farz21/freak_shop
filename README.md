@@ -1,4 +1,4 @@
-# ⚡ FREAK SHOP - E-Commerce
+#  FREAK SHOP - E-Commerce
 
 Proyecto desarrollado para la carrera de Programación en la **UTN**.
 
