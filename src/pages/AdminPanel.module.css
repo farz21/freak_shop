@@ -1,0 +1,245 @@
+.container {
+  color: white;
+  animation: fadeIn 0.5s ease;
+}
+
+.header {
+  margin-bottom: 30px;
+  border-left: 5px solid #00ff88;
+  padding-left: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: #00ff88;
+  margin: 0;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-weight: bold;
+}
+
+.adminBody {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn, .activeBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.btn {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.btn:hover {
+  background: #334155;
+  color: white;
+}
+
+.activeBtn {
+  background: #00ff88;
+  color: #0f172a;
+}
+
+.content {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid #334155;
+}
+
+.sectionCard h2 {
+  color: #00ff88;
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  color: #00ff88;
+  border-bottom: 2px solid #334155;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #334155;
+  font-size: 0.9rem;
+}
+
+.addBtn {
+  margin-top: 20px;
+  background: #00ff88;
+  color: #0f172a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 50px;
+  color: #475569;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive para el Admin */
+@media (max-width: 768px) {
+  .adminBody {
+    grid-template-columns: 1fr;
+  }
+}
+.ticketCard {
+  background: #0f172a;
+  border-left: 4px solid #00ff88;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.statusBadge {
+  background: #00ff88;
+  color: #0f172a;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.prodList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.prodTag {
+  background: #334155;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.ticketTotal {
+  text-align: right;
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.actions { display: flex; gap: 10px; }
+
+.completeBtn {
+  background: #00ff88;
+  color: #0f172a;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.entregado { border-left: 4px solid #94a3b8 !important; opacity: 0.7; }
+
+.badgePending { background: #f59e0b; color: #0f172a; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
+.badgeSuccess { background: #00ff88; color: #0f172a; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.confirmModal {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid #ff4444;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: popIn 0.3s ease-out;
+}
+
+.confirmModal h3 { color: #ff4444; margin: 15px 0; }
+.confirmModal p { color: #94a3b8; margin-bottom: 25px; }
+
+.modalActions { display: flex; gap: 10px; }
+
+.cancelBtn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #94a3b8;
+  color: #94a3b8;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.confirmBtn {
+  flex: 1;
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

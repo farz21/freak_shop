@@ -1,0 +1,82 @@
+.card {
+  background-color: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 260px;
+  border: 1px solid #334155;
+  transition: all 0.3s ease;
+  cursor: default;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #00ff88;
+}
+
+.image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 15px;
+}
+
+.title {
+  font-size: 1rem;
+  margin: 5px 0;
+  height: 40px;
+  overflow: hidden;
+  color: #f8fafc;
+}
+
+.price {
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btnPrimario {
+  flex: 2;
+  padding: 10px;
+  background-color: #00ff88;
+  color: #0f172a;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.btnPrimario:hover {
+  opacity: 0.8;
+}
+
+.btnSecundario {
+  flex: 1;
+  padding: 10px;
+  background-color: transparent;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.btnSecundario:hover {
+  background-color: #334155;
+}

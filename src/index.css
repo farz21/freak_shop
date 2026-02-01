@@ -1,0 +1,18 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #0f172a; /* Fondo oscuro nerd */
+  color: white;
+}
+
+body {
+  margin: 0;
+  display: block; /* Cambiamos flex por block para que el flujo sea normal */
+  min-height: 100vh;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
