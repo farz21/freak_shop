@@ -5,7 +5,7 @@ import Categoria from './pages/Categoria';
 import LoginModal from './components/LoginModal';
 import AdminPanel from './pages/AdminPanel';
 import CartSidebar from './components/CartSidebar';
-import CustomAlert from './components/testt';
+import CustomAlert from './components/CustomAlert';
 import { useCart } from './context/CartContext'; 
 import Footer from './components/Footer';
 
