@@ -209,15 +209,27 @@
 }
 
 @media (max-width: 450px) {
-  .logoContainer {
-    display: none; /* Dejamos solo icono si es muy chico o ajustamos */
+  /* En lugar de ocultar todo el contenedor, solo ocultamos el icono de Terminal */
+  .logoContainer svg {
+    display: none;
+  }
+
+  /* Nos aseguramos que el texto sea visible y tenga un tamaño adecuado */
+  .logoText {
+    display: block; 
+    font-size: 1.2rem; /* Achicamos un pelín la letra para que entre todo */
+    letter-spacing: 1px;
   }
   
+  .logoContainer {
+    display: flex; /* Forzamos a que se muestre */
+  }
+
   .userName {
-    max-width: 70px;
+    max-width: 60px;
   }
   
   .rightSection {
-    gap: 10px;
+    gap: 8px;
   }
 }
