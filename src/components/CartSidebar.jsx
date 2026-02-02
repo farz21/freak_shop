@@ -10,8 +10,6 @@ const CartSidebar = () => {
   if (!isCartOpen) return null;
 
   const handleFinalizar = () => {
-    // La función finalizarCompra ya dispara la alerta estética desde el Context
-    // por lo que no hace falta poner alerts ni estados aquí.
     finalizarCompra(user);
   };
 
@@ -36,7 +34,15 @@ const CartSidebar = () => {
                 <img src={item.imagen} alt={item.nombre} className={styles.itemImg} />
                 <div className={styles.itemInfo}>
                   <h4>{item.nombre}</h4>
-                  <p>${item.precio.toLocaleString()}</p>
+                  {/* --- MODIFICACIÓN AQUÍ: DETALLE DE CANTIDAD --- */}
+                  <div className={styles.quantityDetail}>
+                    <p className={styles.unitPrice}>
+                      {item.cantidad} x ${item.precio.toLocaleString()}
+                    </p>
+                    <p className={styles.subtotal}>
+                      Subtotal: ${(item.cantidad * item.precio).toLocaleString()}
+                    </p>
+                  </div>
                 </div>
                 <button className={styles.removeBtn} onClick={() => removeFromCart(item.id)}>
                   <Trash2 size={18} />

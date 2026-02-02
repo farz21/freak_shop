@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useCart } from '../context/CartContext'; // Importamos el carrito para usar las alertas
+import { useCart } from '../context/CartContext'; 
 import { Navigate } from 'react-router-dom';
-import { Users, Ticket, Package, CheckCircle, Trash2, AlertTriangle } from 'lucide-react';
+import { Users, Ticket, Package, CheckCircle, Trash2, AlertTriangle, Hash } from 'lucide-react';
 import styles from './AdminPanel.module.css';
 
 const AdminPanel = () => {
   const { user } = useAuth();
-  const { mostrarAlerta } = useCart(); // Usamos tu sistema de alertas estéticas
+  const { mostrarAlerta, productosData } = useCart(); // productosData trae el stock dinámico
   const [activeTab, setActiveTab] = useState('usuarios');
   const [registeredUsers, setRegisteredUsers] = useState([]);
   const [pedidos, setPedidos] = useState([]);
-  
-  // Estado para manejar el borrado con estética
   const [pedidoAEliminar, setPedidoAEliminar] = useState(null);
 
   useEffect(() => {
@@ -84,31 +82,38 @@ const AdminPanel = () => {
                     </div>
                     <div className={styles.clientInfo}>
                       <p><strong>Cliente:</strong> {p.usuario}</p>
-                      <p><strong>Tel:</strong> {p.telefono}</p>
                       <p><strong>Fecha:</strong> {p.fecha}</p>
                     </div>
+                    
                     <div className={styles.productTable}>
-                      <div className={styles.tableHeader}><span>PRODUCTOS</span><span> UNITARIOS</span></div>
+                      <div className={styles.tableHeader}>
+                        <span>PRODUCTO (CANT.)</span>
+                        <span>SUBTOTAL</span>
+                      </div>
                       {p.productos.map((item, idx) => (
                         <div key={idx} className={styles.tableRow}>
-                          <span className={styles.prodName}>{item.nombre}</span>
-                          <span className={styles.prodPrice}>: ${item.precio.toLocaleString()}</span>
+                          <span className={styles.prodName}>
+                            {item.nombre} <strong>({item.cantidad})</strong>
+                          </span>
+                          <span className={styles.prodPrice}>
+                            ${(item.precio * item.cantidad).toLocaleString()}
+                          </span>
                         </div>
                       ))}
                     </div>
+
                     <div className={styles.ticketFooter}>
                       <div>
-                        <span className={styles.totalLabel}>PRECIO TOTAL: </span>
+                        <span className={styles.totalLabel}>TOTAL: </span>
                         <span className={styles.totalValue}>${p.total.toLocaleString()}</span>
                       </div>
-                      
                       <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                         {p.estado === 'PENDIENTE' && (
-                          <button className={styles.completeBtn} onClick={() => cambiarEstadoPedido(p.id)} title="Marcar entregado">
+                          <button className={styles.completeBtn} onClick={() => cambiarEstadoPedido(p.id)}>
                             <CheckCircle size={20} />
                           </button>
                         )}
-                        <button className={styles.deleteBtn} onClick={() => setPedidoAEliminar(p.id)} title="Eliminar ticket">
+                        <button className={styles.deleteBtn} onClick={() => setPedidoAEliminar(p.id)}>
                           <Trash2 size={20} />
                         </button>
                       </div>
@@ -118,16 +123,44 @@ const AdminPanel = () => {
               </div>
             </div>
           )}
+
+          {activeTab === 'productos' && (
+            <div className={styles.sectionCard}>
+              <h2>Control de Inventario Dinámico</h2>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock Disponible</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {productosData.map((p) => (
+                    <tr key={p.id}>
+                      <td>{p.nombre}</td>
+                      <td>{p.categoria.toUpperCase()}</td>
+                      <td>${p.precio.toLocaleString()}</td>
+                      <td className={p.stock < 3 ? styles.lowStock : ''}>
+                        {p.stock === 0 ? 'AGOTADO' : `${p.stock} unidades`}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </section>
       </div>
 
-      {/* MODAL DE CONFIRMACIÓN ESTÉTICO */}
+      {/* MODAL DE CONFIRMACIÓN */}
       {pedidoAEliminar && (
         <div className={styles.modalOverlay}>
           <div className={styles.confirmModal}>
             <AlertTriangle size={50} color="#ff4444" />
             <h3>¿BORRAR TICKET?</h3>
-            <p>Esta acción no se puede deshacer. El pedido desaparecerá del historial.</p>
+            <p>Esta acción no se puede deshacer.</p>
             <div className={styles.modalActions}>
               <button className={styles.cancelBtn} onClick={() => setPedidoAEliminar(null)}>CANCELAR</button>
               <button className={styles.confirmBtn} onClick={confirmarEliminacion}>BORRAR AHORA</button>

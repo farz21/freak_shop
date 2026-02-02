@@ -66,11 +66,11 @@ const Home = () => {
               style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${slide.img})` }}
             >
               <div className={styles.slideContent}>
-                {slide.type === 'upcoming' && <span className={styles.badge}><Zap size={14} /> EXCLUSIVO</span>}
+                {slide.type === 'upcoming' && <span className={styles.badge}></span>}
                 <h2 style={{ color: slide.color }}>{slide.title}</h2>
                 <p>{slide.desc}</p>
                 <button className={styles.btnExplorar} style={{ borderColor: slide.color }}>
-                  {slide.type === 'upcoming' ? 'AVÍSAME AL LANZAR' : 'VER PRODUCTO'}
+                  {slide.type === 'upcoming' ? 'EXCLUSIVO' : 'PROXIMAMENTE'}
                 </button>
               </div>
             </div>
