@@ -31,7 +31,7 @@ const Navbar = () => {
       <ul className={`${styles.navLinks} ${isMenuOpen ? styles.navActive : ''}`}>
         <li><Link to="/categoria/accesorios" className={styles.link} onClick={closeMenu}>Accesorios</Link></li>
         <li><Link to="/categoria/coleccionables" className={styles.link} onClick={closeMenu}>Coleccionables</Link></li>
-        <li><Link to="/categoria/merch" className={styles.link} onClick={closeMenu}>Outfit</Link></li>
+        <li><Link to="/categoria/outfit" className={styles.link} onClick={closeMenu}>Outfit</Link></li>
       </ul>
 
       <div className={styles.rightSection}>
