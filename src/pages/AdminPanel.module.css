@@ -243,3 +243,42 @@
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+/* --- Ajuste Inventario --- */
+
+.tableResponsive {
+  width: 100%;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch;
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.2); 
+  border-radius: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 450px; 
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
+    overflow: hidden; 
+  }
+
+  .table th, .table td {
+    padding: 8px 4px;
+    font-size: 0.75rem; 
+  }
+
+  /* Ocultamos la categoría en pantallas muy pequeñas (menos de 480px) 
+     para que el nombre del producto tenga más espacio */
+  @media (max-width: 480px) {
+    .categoryColumn {
+      display: none;
+    }
+    .table {
+      min-width: 100%;
+    }
+  }
+}
